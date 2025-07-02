@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Componentes de una Computadora</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1f1f1f);
+      color: #f2f2f2;
+    }
+
+    header {
+      background-color: #111;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px #00ffcc;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ffcc;
+    }
+
+    main {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .boton-componente {
+      display: inline-block;
+      background-color: transparent;
+      color: #00ffcc;
+      border: 2px solid #00ffcc;
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: rebote 1s ease infinite alternate;
+    }
+
+    .boton-componente:hover {
+      background-color: #00ffcc;
+      color: black;
+      box-shadow: 0 0 20px #00ffcc;
+      transform: scale(1.1);
+    }
+
+    .boton-componente:active {
+      transform: scale(0.95);
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    @keyframes rebote {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-3px); }
+    }
+
+    .contenido {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #66ffcc;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffcc33;
+    }
+
+    .contenido img {
+      margin-top: 15px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    footer {
+      background-color: #111;
+      color: #888;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧠 Componentes de una Computadora 💻</h1>
+  </header>
+
+  <main>
+    <p>Haz clic en un componente para ver su descripción e imagen:</p>
+
+    <button class="boton-componente" onclick="mostrarInfo('cpu')">CPU</button>
+    <button class="boton-componente" onclick="mostrarInfo('ram')">RAM</button>
+    <button class="boton-componente" onclick="mostrarInfo('gpu')">Tarjeta Gráfica</button>
+    <button class="boton-componente" onclick="mostrarInfo('motherboard')">Placa Base</button>
+    <button class="boton-componente" onclick="mostrarInfo('almacenamiento')">Disco Duro / SSD</button>
+    <button class="boton-componente" onclick="mostrarInfo('fuente')">Fuente de Poder</button>
+    <button class="boton-componente" onclick="mostrarInfo('gabinete')">Gabinete</button>
+    <button class="boton-componente" onclick="mostrarInfo('perifericos')">Periféricos</button>
+
+    <div class="contenido" id="info"></div>
+  </main>
+
+  <footer>
+    © 2025 Hecho por cuarto Informática de la tarde.
+  </footer>
+
+  <script>
+    function mostrarInfo(componente) {
+      const contenido = {
+        cpu: {
+          texto: "🧠 <strong>CPU (Unidad Central de Procesamiento)</strong>: Es el cerebro del computador. Ejecuta instrucciones y controla el funcionamiento de todos los componentes.",
+          imagen: "imagenes/img1.jpg" // Asignado a img1.jpg
+        },
+        ram: {
+          texto: "📚 <strong>RAM (Memoria de Acceso Aleatorio)</strong>: Almacena datos temporales y ayuda a que los programas funcionen rápido mientras están abiertos.",
+          imagen: "imagenes/img2.jpg" // Asignado a img2.jpg
+        },
+        gpu: {
+          texto: "🎮 <strong>Tarjeta Gráfica (GPU)</strong>: Procesa los gráficos. Esencial para videojuegos, diseño 3D y edición de video.",
+          imagen: "imagenes/img3.jpg" // Asignado a img3.jpg
+        },
+        motherboard: {
+          texto: "🔌 <strong>Placa Base</strong>: Conecta todos los componentes. Es como el sistema nervioso de la computadora.",
+          imagen: "imagenes/img4.jpg" // Asignado a img4.jpg
+        },
+        almacenamiento: {
+          texto: "💾 <strong>Almacenamiento (HDD / SSD)</strong>: Guarda el sistema operativo, archivos y programas.",
+          imagen: "imagenes/img5.jpg" // Asignado a img5.jpg
+        },
+        fuente: {
+          texto: "⚡ <strong>Fuente de Poder</strong>: Transforma la energía eléctrica en voltajes adecuados para cada componente.",
+          imagen: "imagenes/img6.jpg" // Asignado a img6.jpg
+        },
+        gabinete: {
+          texto: "🖥️ <strong>Gabinete</strong>: Caja que protege y organiza todos los componentes internos.",
+          imagen: "imagenes/img7.jpg" // Asignado a img7.jpg
+        },
+        perifericos: {
+          texto: "⌨️ <strong>Periféricos</strong>: Teclado, ratón, monitor, impresora, etc. permiten interactuar con la computadora.",
+          imagen: "imagenes/img8.jpg" // Asignado a img8.jpg
+        }
+      };
+
+      const item = contenido[componente];
+      if (item) {
+        document.getElementById("info").innerHTML = `
+          ${item.texto}
+          <br>
+          <img src="${item.imagen}" alt="${componente}">
+        `;
+      } else {
+        document.getElementById("info").innerHTML = "Selecciona un componente para ver su información.";
+      }
+    }
+  </script>
+</body>
+</html>
